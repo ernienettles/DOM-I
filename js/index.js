@@ -44,7 +44,7 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 function getNavLinks() {
 const nav = document.querySelectorAll('nav a');
 
-for (i = 0; i < nav.length; i++) {
+for (let i = 0; i < nav.length; i++) {
   const navLinks = Object.values(siteContent["nav"]);
   nav[i].textContent = navLinks[i];
 }
@@ -80,5 +80,26 @@ getMainContent(mainHeader, 'h4');
 getMainContent(mainParagraphs, 'content');
 mainImage.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
+function getContact() {
+  const header = document.querySelector('.contact h4')
+  header.textContent = siteContent["contact"]["contact-h4"];
 
+  const address = document.querySelector('.contact p:nth-child(2)');
+  address.textContent = siteContent["contact"]["address"];
 
+  const phone = document.querySelector('.contact p:nth-child(3)');
+  phone.textContent = siteContent["contact"]["phone"];
+
+  const email = document.querySelector('.contact p:nth-child(4)');
+  email.textContent = siteContent["contact"]["email"];
+}
+
+ getContact();
+
+ function getFooter(){
+   const footer = document.querySelector('footer p');
+   footer.textContent = siteContent["footer"]["copyright"];
+ }
+ getFooter();
+
+  
