@@ -49,8 +49,33 @@ for (let i = 0; i < nav.length; i++) {
   nav[i].textContent = navLinks[i];
 }
 }
-
 getNavLinks();
+
+function addNavLinks() {
+  let nav = document.querySelector('nav');
+  let a = document.createElement('a');
+  let a2 = document.createElement('a');
+  a.textContent = "Search";
+  a.setAttribute('href', '#')
+  a2.textContent = "Careers";
+  a2.setAttribute('href', '#')
+  nav.appendChild(a);
+  nav.prepend(a2);
+}
+
+addNavLinks();
+
+function changeNavColor() {
+  const nav = document.querySelectorAll('nav a');
+  
+  for (let i = 0; i < nav.length; i++) {
+    nav[i].style.color = "green";
+  }
+}
+
+changeNavColor();
+
+
 
 function getCta() {
   let ctaH1 = document.querySelector('.cta-text h1');
