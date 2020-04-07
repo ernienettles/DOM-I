@@ -40,3 +40,45 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+function getNavLinks() {
+const nav = document.querySelectorAll('nav a');
+
+for (i = 0; i < nav.length; i++) {
+  const navLinks = Object.values(siteContent["nav"]);
+  nav[i].textContent = navLinks[i];
+}
+}
+
+getNavLinks();
+
+function getCta() {
+  let ctaH1 = document.querySelector('.cta-text h1');
+  let ctaButton = document.querySelector('.cta-text button');
+  let ctaLogo = document.querySelector('#cta-img');
+
+  ctaH1.innerHTML = siteContent["cta"]["h1"].split(' ').join(' <br>');
+  ctaButton.textContent = siteContent["cta"]["button"];
+  ctaLogo.setAttribute('src', siteContent["cta"]["img-src"]);
+}
+
+getCta();
+
+let mainHeader = document.querySelectorAll('.main-content h4');
+let mainParagraphs = document.querySelectorAll('.main-content p');
+let mainImage = document.querySelector('.middle-img');
+
+function getMainContent(par, type) {
+  let newArray = [];
+  Object.entries(siteContent["main-content"]).forEach(([key, value]) => {
+    if (key.includes(type)) newArray.push(value);
+  })
+ par.forEach((val, i) => val.textContent = newArray[i]);
+}
+
+getMainContent(mainHeader, 'h4');
+getMainContent(mainParagraphs, 'content');
+mainImage.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
+
+
+
