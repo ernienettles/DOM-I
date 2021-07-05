@@ -40,3 +40,91 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+function getNavLinks() {
+const nav = document.querySelectorAll('nav a');
+
+for (let i = 0; i < nav.length; i++) {
+  const navLinks = Object.values(siteContent["nav"]);
+  nav[i].textContent = navLinks[i];
+}
+}
+getNavLinks();
+
+function addNavLinks() {
+  let nav = document.querySelector('nav');
+  let a = document.createElement('a');
+  let a2 = document.createElement('a');
+  a.textContent = "Search";
+  a.setAttribute('href', '#')
+  a2.textContent = "Careers";
+  a2.setAttribute('href', '#')
+  nav.appendChild(a);
+  nav.prepend(a2);
+}
+
+addNavLinks();
+
+function changeNavColor() {
+  const nav = document.querySelectorAll('nav a');
+  
+  for (let i = 0; i < nav.length; i++) {
+    nav[i].style.color = "green";
+  }
+}
+
+changeNavColor();
+
+
+
+function getCta() {
+  let ctaH1 = document.querySelector('.cta-text h1');
+  let ctaButton = document.querySelector('.cta-text button');
+  let ctaLogo = document.querySelector('#cta-img');
+
+  ctaH1.innerHTML = siteContent["cta"]["h1"].split(' ').join(' <br>');
+  ctaButton.textContent = siteContent["cta"]["button"];
+  ctaLogo.setAttribute('src', siteContent["cta"]["img-src"]);
+}
+
+getCta();
+
+let mainHeader = document.querySelectorAll('.main-content h4');
+let mainParagraphs = document.querySelectorAll('.main-content p');
+let mainImage = document.querySelector('.middle-img');
+
+function getMainContent(par, type) {
+  let newArray = [];
+  Object.entries(siteContent["main-content"]).forEach(([key, value]) => {
+    if (key.includes(type)) newArray.push(value);
+  })
+ par.forEach((val, i) => val.textContent = newArray[i]);
+}
+
+getMainContent(mainHeader, 'h4');
+getMainContent(mainParagraphs, 'content');
+mainImage.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
+
+function getContact() {
+  const header = document.querySelector('.contact h4')
+  header.textContent = siteContent["contact"]["contact-h4"];
+
+  const address = document.querySelector('.contact p:nth-child(2)');
+  address.textContent = siteContent["contact"]["address"];
+
+  const phone = document.querySelector('.contact p:nth-child(3)');
+  phone.textContent = siteContent["contact"]["phone"];
+
+  const email = document.querySelector('.contact p:nth-child(4)');
+  email.textContent = siteContent["contact"]["email"];
+}
+
+ getContact();
+
+ function getFooter(){
+   const footer = document.querySelector('footer p');
+   footer.textContent = siteContent["footer"]["copyright"];
+ }
+ getFooter();
+
+  
